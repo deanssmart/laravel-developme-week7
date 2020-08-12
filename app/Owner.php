@@ -34,7 +34,7 @@ class Owner extends Model
         }
     }
 
-    public function formattedPhoneNumber()
+    public function formattedPhoneNumber() : string
     {
         $formattedNumber = sprintf("%s %s %s",
                                    substr($this->telephone, 0, 4),

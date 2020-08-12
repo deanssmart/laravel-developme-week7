@@ -15,10 +15,10 @@ class CreateOwnersTable extends Migration
     {
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
-            $table->string("first_name", 50);
-            $table->string("last_name", 50);
-            $table->string("telephone", 11);
-            $table->string("email", 50)->unique();
+            $table->string("first_name", 50)->default('');
+            $table->string("last_name", 50)->default('');
+            $table->string("telephone", 11)->default('');
+            $table->string("email", 50)->default('');
             $table->timestamps();
         });
     }
