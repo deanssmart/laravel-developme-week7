@@ -7,6 +7,17 @@ use Illuminate\Support\Collection;
 
 class Owner extends Model
 {
+    protected $fillable = [    
+        "first_name",
+        "last_name",
+        "telephone",
+        "email",
+        "address_1",
+        "address_2",
+        "town",
+        "postcode"
+    ];
+
     public static function haveWeBananas(int $number) : string
     {
         if ($number <= 0) {
@@ -25,13 +36,10 @@ class Owner extends Model
 
     public function fullAddress() : string
     {
-        if($this->address_2 !== null){
-            $fullAddress = collect([$this->address_1, $this->address_2, $this->town, $this->postcode]);
-            return $fullAddress->join("\n");
-        } else {
-            $fullAddress = collect([$this->address_1, $this->town, $this->postcode]);
-            return $fullAddress->join("\n");
-        }
+       return $this->address_2 ?
+       join("\n", [$this->address_1, $this->address_2, $this->town, $this->postcode]) :
+       join("\n", [$this->address_1, $this->town, $this->postcode]);
+    
     }
 
     public function formattedPhoneNumber() : string
@@ -42,4 +50,10 @@ class Owner extends Model
                                    substr($this->telephone, 7, 4));
         return $formattedNumber;
     }
+
+    public static function checkExistingEmail($email) : bool
+    {
+        return Owner::where('email', $email)->exists();
+    }
+
 }
