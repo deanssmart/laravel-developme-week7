@@ -1,6 +1,8 @@
-<ul class="list-group">
-    @foreach ($owners as $owner)
-
+@if ($owners->isEmpty())
+    <p class="container mb-1">No Owners found</p>
+@else
+    <ul class="list-group">
+        @foreach ($owners as $owner)
             <li>
                 <a href="/owners/{{ $owner->id }}"" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
@@ -10,8 +12,9 @@
                     <p class="mb-1">more details...</p>
                 </a>
             </li>
+        @endforeach
+    </ul>
+@endif
 
-    @endforeach
-</ul>
 
 
