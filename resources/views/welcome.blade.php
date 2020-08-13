@@ -2,9 +2,13 @@
 
 @section("content")
     <div class="list-group">
-        @foreach (App\Owner::all() as $owner)
+    @if ($owners->isEmpty())
+        <p class="mb-1">No Owners found</p>
+    @else
+        @foreach ($owners as $owner)
             @include("_partials/list-item", ["owner" => $owner])
         @endforeach
+    @endif
     </div>
 @endsection
 
