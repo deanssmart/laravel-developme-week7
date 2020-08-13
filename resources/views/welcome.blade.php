@@ -1,17 +1,28 @@
-@extends("app")
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section("content")
-    <div class="list-group">
-    @if ($owners->isEmpty())
-        <p class="mb-1">No Owners found</p>
-    @else
-        @foreach ($owners as $owner)
-            @include("_partials/list-item", ["owner" => $owner])
-        @endforeach
-    @endif
-    </div>
-@endsection
+        
+        <link rel="stylesheet" href="/main.css"/>
 
-@section("title")
-    <title>The Vets Practice</title>
-@endsection
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+        <title>The Vets Practice</title>
+
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            <div class="content">
+                <div class="title m-b-md">
+                    {{$welcomeMsg}}
+                </div>
+                <div class="links">
+                    <a href="/owners">Owners</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

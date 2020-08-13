@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "Owners@index");
+Route::get('/', "Home@index");
+Route::get('/owners', "Owners@index");
+Route::get('/owners/{owner}', "Owners@show");
