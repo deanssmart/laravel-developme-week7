@@ -44,5 +44,15 @@ class Owners extends Controller
         ]);
     }
 
+    public function editPost(OwnerRequest $request, Owner $owner)
+    {
+        // get all of the submitted data
+        $data = $request->all();
+        // create a new owner, passing in the submitted data
+        $owner->fill($data)->save();
+        // redirect the browser to the new Owner
+        return redirect("/owners/{$owner->id}");        
+    }
+
 
 }
