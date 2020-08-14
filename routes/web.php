@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', "Home@index");
-Route::get('/owners', "Owners@index");
-Route::get('/owners/{owner}', "Owners@show");
+
+
+Route::group(["prefix" => "owners"], function(){
+    Route::get('index', "Owners@index");
+    Route::get('create', "Owners@create");
+    Route::post('create', "Owners@createPost");
+    Route::get('{owner}', "Owners@show");
+});

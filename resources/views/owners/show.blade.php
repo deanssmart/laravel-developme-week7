@@ -1,4 +1,9 @@
 @extends("app")
+
+    @section("title")
+        - {{$owner->fullName()}}
+    @endsection
+
     @section("content")
         <div class="container">
             <div class="d-flex w-100 justify-content-between">
@@ -9,8 +14,5 @@
             <p class="mb-1">{{ $owner->formattedPhoneNumber() }}</p>
             <p class="mb-1">{{ $owner->email }}</p>
         </div>
-@endsection
+    @endsection
 
-@section("title")
-    - {{$owner->fullName()}}
-@endsection
