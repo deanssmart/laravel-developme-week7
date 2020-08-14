@@ -1,9 +1,9 @@
 @extends("app")
 
     @section("title")
-        - Edit
+        - Create
     @endsection
-    
+
     @section("content")
         @include("_partials/form")
     @endsection

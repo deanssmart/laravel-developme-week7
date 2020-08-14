@@ -11,7 +11,7 @@ class Owners extends Controller
     public function index()
     {        
         return view("owners/index", [
-            "owners" => Owner::all()
+            "owners" => Owner::all()->sortByDesc("updated_at")
         ]);
     }
 
@@ -24,7 +24,7 @@ class Owners extends Controller
 
     public function create()
     {
-        return view("owners/form");
+        return view("owners/create");
     }
 
     public function createPost(OwnerRequest $request)
@@ -48,9 +48,9 @@ class Owners extends Controller
     {
         // get all of the submitted data
         $data = $request->all();
-        // create a new owner, passing in the submitted data
+        // fill current owner with data
         $owner->fill($data)->save();
-        // redirect the browser to the new Owner
+        // redirect the browser to the Owner
         return redirect("/owners/{$owner->id}");        
     }
 
