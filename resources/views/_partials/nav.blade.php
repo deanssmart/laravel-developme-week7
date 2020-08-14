@@ -1,7 +1,7 @@
 <header>
     <nav class="mt-4 navbar navbar-light bg-light bold">
-        <a class="navbar-brand" href="/">
-            <h2 class = "bold">The Vets Practice</h2>
+        <a class="navbar-brand colour" href="/">
+            <h2 class = "bold">The Vet Practice</h2>
         </a>
         <div class="links">
             <a href="/">Home</a>

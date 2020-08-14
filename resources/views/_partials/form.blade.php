@@ -1,6 +1,6 @@
     <form class="form card" method="post">
       @csrf     {{--  Cross-Site Request Forgery  --}}
-        <h2 class="card-header">Edit Owner</h2>
+        <h2 class="card-header">{{ $heading }} Owner</h2>
 
         <fieldset class="card-body">
             <div class="form-group">

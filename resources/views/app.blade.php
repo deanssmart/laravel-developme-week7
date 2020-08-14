@@ -13,7 +13,7 @@
     />
     <link rel="stylesheet" href="/main.css"/>
     
-    <title>The Vets Practice @yield("title")</title>
+    <title>The Vet Practice @yield("title")</title>
     
   </head>
   <body>

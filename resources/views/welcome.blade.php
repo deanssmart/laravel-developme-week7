@@ -10,14 +10,14 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <title>The Vets Practice</title>
+        <title>The Vet Practice</title>
 
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    {{$welcomeMsg}}
+                {{$welcomeMsg}}<br>Welcome to The Vet Practice
                 </div>
                 <div class="links">
                     <a href="/owners/index">Owners</a>
