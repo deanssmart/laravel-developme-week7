@@ -13,6 +13,11 @@
             <p class="mb-1">{!! nl2br($owner->fullAddress()) !!}</p>
             <p class="mb-1">{{ $owner->formattedPhoneNumber() }}</p>
             <p class="mb-1">{{ $owner->email }}</p>
+           
         </div>
+        <div class="card-footer text-right">
+            <a href="/owners/edit/{{ $owner->id }}" class="btn btn-success">Edit</a>
+        </div> 
+
     @endsection
 

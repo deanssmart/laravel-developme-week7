@@ -36,4 +36,13 @@ class Owners extends Controller
         // redirect the browser to the new Owner
         return redirect("/owners/{$owner->id}");        
     }
+
+    public function edit(Owner $owner)
+    {
+        return view("owners/edit", [
+            "owner" => $owner
+        ]);
+    }
+
+
 }
