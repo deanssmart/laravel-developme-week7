@@ -15,7 +15,7 @@ class Owner extends Model
         "address_1",
         "address_2",
         "town",
-        "postcode"
+        "postcode",
     ];
 
     public static function haveWeBananas(int $number) : string
