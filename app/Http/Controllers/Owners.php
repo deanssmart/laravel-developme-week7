@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Owner;
+use App\Http\Requests\OwnerRequest;
 
 class Owners extends Controller
 {
@@ -26,7 +27,7 @@ class Owners extends Controller
         return view("owners/form");
     }
 
-    public function createPost(Request $request)
+    public function createPost(OwnerRequest $request)
     {
         // get all of the submitted data
         $data = $request->all();
