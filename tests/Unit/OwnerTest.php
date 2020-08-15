@@ -48,17 +48,23 @@ class OwnerTest extends TestCase
         $this->assertSame($ownerFromDB->fullName(), "Test Owner");
     }
 
-    public function testEmailExists()
+    public function testEmail()
     { 
         $ownerFromDB = Owner::first();
-        $this->assertTrue($ownerFromDB->checkExistingEmail("captain@homestead.test"));
+        $this->assertDatabaseHas('owners', [
+            'email' => 'captain@homestead.test',
+        ]);
+
+        $this->assertDatabaseMissing('owners', [
+            'email' => 'sir@homestead.test',
+        ]);
+
+        // Could also use the checkExistingEmail method in owners:
+        // $this->assertTrue($ownerFromDB->checkExistingEmail("captain@homestead.test"));
+        //     $this->assertFalse($ownerFromDB->checkExistingEmail("sir@homestead.test"));
+
     }
 
-    public function testEmailDoesNotExist()
-    { 
-        $ownerFromDB = Owner::first();
-        $this->assertFalse($ownerFromDB->checkExistingEmail("sir@homestead.test"));
-    }
 }
 
 
