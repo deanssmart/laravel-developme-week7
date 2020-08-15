@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', "Home@index");
 
-
 Route::group(["prefix" => "owners"], function(){
     Route::get('index', "Owners@index");
     Route::get('search', "Owners@search");
