@@ -2,9 +2,11 @@
 
 namespace Tests\Unit;
 
+use App\Owner;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Owner;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+
 
 class OwnerTest extends TestCase
 {

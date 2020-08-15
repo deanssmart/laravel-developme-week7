@@ -15,4 +15,5 @@ class BananaTest extends TestCase
         $this->assertSame(Owner::haveWeBananas(1), "Yes we have 1 banana");
         $this->assertSame(Owner::haveWeBananas(-12), "No we have no bananas");
     }
+
 }
