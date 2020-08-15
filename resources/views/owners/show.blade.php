@@ -15,9 +15,7 @@
             <p class="mb-1">{{ $owner->email }}</p>
            
         </div>
-        <div class="card-footer text-right">
-            <a href="/owners/edit/{{ $owner->id }}" class="btn btn-success">Edit</a>
-        </div> 
+        @include("_partials/buttons", ["owner" => $owner])    
 
     @endsection
 

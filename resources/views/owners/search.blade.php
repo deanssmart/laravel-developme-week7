@@ -5,6 +5,6 @@
     @endsection
 
     @section("content")
-        <h3 class = "container card-header card">Matched Owners</h3>
+        <h3 class = "container card-header mb-4">Matched Owners</h3>
         @include("_partials/list", ["owners" => $owners])
     @endsection

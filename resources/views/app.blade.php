@@ -2,6 +2,7 @@
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
+
     <link
         rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -10,9 +11,8 @@
     />
     <link 
         href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"
-    />
+    />    
     <link rel="stylesheet" href="/main.css"/>
-    
     <title>The Vet Practice @yield("title")</title>
     
   </head>

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Owner;
 use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;
-
+use Illuminate\Support\Facades\DB;
 
 class Owners extends Controller
 {
@@ -58,6 +59,12 @@ class Owners extends Controller
                                ->get()->sortByDesc("updated_at")
         ]);
 
+    }
+
+    public function destroy(Owner $owner)
+    {
+        $owner->delete();
+        return redirect("/owners/index");
     }
 
 }
