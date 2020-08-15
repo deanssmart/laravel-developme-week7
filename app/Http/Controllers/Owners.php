@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Owner;
 use App\Http\Requests\OwnerRequest;
 
+
 class Owners extends Controller
 {
     public function index()
@@ -54,5 +55,15 @@ class Owners extends Controller
         return redirect("/owners/{$owner->id}");        
     }
 
+    public function search(Request $request)
+    {
+        $name = $request->get('search');
+         return view("owners/search", [
+            "owners" => Owner::where('first_name', 'LIKE', '%' . $name . '%')
+                               ->orWhere('last_name', 'LIKE', '%' . $name . '%')
+                               ->get()->sortByDesc("updated_at")
+        ]);
+
+    }
 
 }

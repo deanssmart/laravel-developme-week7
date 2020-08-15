@@ -18,9 +18,13 @@ Route::get('/', "Home@index");
 
 Route::group(["prefix" => "owners"], function(){
     Route::get('index', "Owners@index");
+    Route::get('search', "Owners@search");
     Route::get('create', "Owners@create");
     Route::post('create', "Owners@createPost");
-    Route::get('edit/{owner}', "Owners@edit");   
-    Route::post('edit/{owner}', "Owners@editPost"); 
     Route::get('{owner}', "Owners@show");
+    Route::group(["prefix" => "edit"], function(){
+        Route::get('{owner}', "Owners@edit");   
+        Route::post('{owner}', "Owners@editPost"); 
+    });
+    
 });
