@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 date_default_timezone_set("Europe/London");
 
 class Home extends Controller
 {
+        /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+
     public function index()
     {
         $now =  date("H");
@@ -19,12 +26,16 @@ class Home extends Controller
             $message = "Good Evening";
         }
 
+        if(Auth::check()) {
+            $user = Auth::user()->name;
+        } else {
+            $user = "";
+        }
+
+        $message .= " ".$user;
+
         return view("home", ["welcomeMsg" => $message]);
        
     }
 
-    // public function logout()
-    // {
-
-    // }
 }

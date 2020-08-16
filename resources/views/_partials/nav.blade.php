@@ -8,7 +8,7 @@
         </a>
      
         <div class="links">
-            <a href="/">Home</a>
+            <a href="/home">Home</a>
             <a href="/owners/index">Owners</a>
             <a href="/owners/create">New Owner</a>
         </div>   

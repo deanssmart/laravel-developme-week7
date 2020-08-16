@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', "Home@index");
+Route::get('/home', "Home@index");
 
 Route::group(["prefix" => "owners"], function(){
     Route::group(["middleware" => "auth"], function() {
@@ -30,4 +31,3 @@ Route::group(["prefix" => "owners"], function(){
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index');
