@@ -52,10 +52,10 @@ class Owners extends Controller
 
     public function search(Request $request)
     {
-        $name = $request->get('search');
+        $query = $request->get('search');
         return view("owners/search", [
-            "owners" => Owner::where('first_name', 'LIKE', '%' . $name . '%')
-                               ->orWhere('last_name', 'LIKE', '%' . $name . '%')
+            "owners" => Owner::where('first_name', 'LIKE', '%' . $query . '%')
+                               ->orWhere('last_name', 'LIKE', '%' . $query . '%')
                                ->get()->sortByDesc("updated_at")
         ]);
 
