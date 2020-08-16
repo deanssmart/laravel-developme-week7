@@ -3,7 +3,7 @@
         <a class="navbar-brand colour" href="/">
             <h2 class = "bold">The Vet Practice</h2>
             @if (Auth::check()) 
-            <p>Logged in as {{ Auth::user()->name }}</p>
+            <p class="small">Logged in as {{ Auth::user()->name }}<p>
             @endif
         </a>
      
