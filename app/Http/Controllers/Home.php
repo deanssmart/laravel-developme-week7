@@ -19,7 +19,12 @@ class Home extends Controller
             $message = "Good Evening";
         }
 
-        return view("welcome", ["welcomeMsg" => $message]);
+        return view("home", ["welcomeMsg" => $message]);
        
     }
+
+    // public function logout()
+    // {
+
+    // }
 }

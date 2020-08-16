@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Session;
 use App\Owner;
 use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;

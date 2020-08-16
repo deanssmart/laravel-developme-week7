@@ -21,7 +21,7 @@
                 </div>
                 <div class="links">
                     <a href="/owners/index">Owners</a>
-                    <a href="/owners/create">New Owner</a>                    
+                    <a href="/owners/create">New Owner</a>                         
                 </div>
             </div>
         </div>

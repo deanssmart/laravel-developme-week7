@@ -30,4 +30,4 @@ Route::group(["prefix" => "owners"], function(){
 
 Auth::routes(['register' => false]);
 
-
+Route::get('/home', 'HomeController@index');

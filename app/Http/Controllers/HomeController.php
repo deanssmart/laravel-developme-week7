@@ -23,6 +23,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $now =  date("H");
+
+        if($now < "12"){
+            $message = "Good Morning";
+        } else if ($now >= "12" && $now < "18"){
+            $message = "Good Afternoon";
+        } else {
+            $message = "Good Evening";
+        }
+
+        return view("home", ["welcomeMsg" => $message]);
+       
     }
 }
