@@ -22,13 +22,22 @@
             <ul class="list-group">
                 @foreach ($animals as $animal)
                     <li class = "card mb-2">
-                        <a href="#" class="border-0 list-group-item list-group-item-action">
+                        <div class="border-0 list-group-item">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-3 bold">{{ $animal->name }}</h5>
-                                <small>{{ $animal->updated_at->diffForHumans() }}</small>
+                                                                                              
+                                <p class="text-center mb-1"><span class="bold">Type: </span><br>{{ $animal->type }}</p>
+                                <p class="text-center mb-1"><span class="bold">Age: </span><br>{{ $animal->age() }}</p>
+                                <p class="text-center mb-1"><span class="bold">Weight: </span><br>{{ $animal->weight }}Kg</p>
+                                <p class="text-center mb-1"><span class="bold">Height: </span><br>{{ $animal->height }}m</p>
+                                @if ($animal->dangerous())
+                                <p class="text-center mb-1 alert-danger rounded-lg px-2"><span class="bold">Biteyness: </span><br><span class="bold">{{ $animal->biteyness }}</span></p>
+                                @else
+                                <p class="text-center mb-1"><span class="bold">Biteyness: </span><br>{{ $animal->biteyness }}</p> 
+                                @endif
+                                <small>{{ $animal->updated_at->diffForHumans() }}</small>                                
                             </div>
-                            <p class="mb-1">more details...</p>
-                        </a>
+                        </div>
                         @include("_partials/buttons", ["owner" => $owner])
                     </li>
                 @endforeach

@@ -25,4 +25,9 @@ class Animal extends Model
     {
         return $this->biteyness >= 3;
     }
+
+    public function age() : int
+    {
+        return date_diff(date_create($this->dob), date_create('today'))->y;
+    }
 }

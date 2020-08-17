@@ -54,7 +54,7 @@
                 <input 
                     type="number"
                     min="0"
-                    step="any"
+                    step="0.01"
                     class="form-control @error('weight') is-invalid @enderror" 
                     id="weight" 
                     name="weight"                     
@@ -72,7 +72,7 @@
                 <input
                     type="number"
                     min="0"
-                    step="any"
+                    step="0.01"
                     class="form-control @error('height') is-invalid @enderror"
                     id="height"
                     name="height"
