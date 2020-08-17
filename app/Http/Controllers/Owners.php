@@ -64,6 +64,22 @@ class Owners extends Controller
         return redirect("/owners/{$owner->id}");        
     }
 
+    public function animalEdit(Owner $owner, Animal $animal)
+    {
+        return view("animals/edit", [
+            "owner" => $owner,
+            "animal" => $animal
+        ]);
+    }
+
+    public function animalEditPost(AnimalRequest $request, Animal $animal, Owner $owner)
+    {
+        $owner = $animal->owner;
+        $data = $request->all();
+        $animal->fill($data)->save();
+        return redirect("/owners/{$owner->id}");        
+    }
+
     public function search(Request $request)
     {
         $query = $request->get('search');

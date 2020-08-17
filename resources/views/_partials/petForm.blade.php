@@ -9,7 +9,7 @@
                     class="form-control @error('name') is-invalid @enderror"
                     id="name" 
                     name="name"                    
-                    value="{{ old('name') ?? ($owner->name ?? '') }}"/>
+                    value="{{ old('name') }}"/>
 
                 @error('name')
                     <p class="invalid-feedback">
@@ -24,7 +24,7 @@
                     class="form-control @error('type') is-invalid @enderror"
                     id="type"
                     name="type"                    
-                    value="{{ old('type') ?? ($owner->type ?? '') }}"/>
+                    value="{{ old('type') }}"/>
 
                 @error('type')
                     <p class="invalid-feedback">
@@ -40,7 +40,7 @@
                     class="form-control @error('dob') is-invalid @enderror"
                     id="dob"
                     name="dob"                    
-                    value="{{ old('dob') ?? ($owner->dob ?? '') }}"/>
+                    value="{{ old('dob') }}"/>
 
                 @error('dob')
                     <p class="invalid-feedback">
@@ -50,7 +50,7 @@
             </div>
 
             <div class="form-group">
-                <label for="weight">Weight</label>
+                <label for="weight">Weight (kg)</label>
                 <input 
                     type="number"
                     min="0"
@@ -58,7 +58,7 @@
                     class="form-control @error('weight') is-invalid @enderror" 
                     id="weight" 
                     name="weight"                     
-                    value="{{ old('weight') ?? ($owner->weight ?? '') }}"/>
+                    value="{{ old('weight') }}"/>
 
                 @error('weight')
                     <p class="invalid-feedback">
@@ -68,7 +68,7 @@
             </div>            
 
             <div class="form-group">
-                <label for="height">Height</label>
+                <label for="height">Height (m)</label>
                 <input
                     type="number"
                     min="0"
@@ -76,7 +76,7 @@
                     class="form-control @error('height') is-invalid @enderror"
                     id="height"
                     name="height"
-                    value="{{ old('height') ?? ($owner->height ?? '') }}"/>
+                    value="{{ old('height') }}"/>
 
                 @error('height')
                     <p class="invalid-feedback">
@@ -90,7 +90,7 @@
                 <select class="form-control @error('biteyness') is-invalid @enderror"
                 id="biteyness"
                 name="biteyness"
-                value="{{ old('biteyness') ?? ($owner->biteyness ?? '') }}"/>
+                value="{{ old('biteyness') }}"/>
 
                 @error('biteyness')
                     <p class="invalid-feedback">
