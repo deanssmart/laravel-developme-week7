@@ -31,5 +31,11 @@ Route::group(["prefix" => "owners"], function(){
 
 });
 
+Route::group(["prefix" => "animals"], function(){
+    Route::group(["middleware" => "auth"], function() {
+        Route::post('delete/{animal}', "Owners@animalDestroy");
+    });
+});
+
 Auth::routes(['register' => false]);
 

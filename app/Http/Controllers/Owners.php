@@ -81,4 +81,12 @@ class Owners extends Controller
         return redirect("/owners/index");
     }
 
+    public function animalDestroy(Animal $animal)
+    {
+        $owner = $animal->owner;
+        $animal->delete();
+        
+        return redirect("/owners/{$owner->id}");
+    }
+
 }
