@@ -23,7 +23,7 @@
                     <a href="/owners/index">Owners</a>
                     <a href="/owners/create">New Owner</a>
                     @if (Auth::check())   
-                        <a href="{{ route('logout') }}"
+                        <a href="#"
                         onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     Logout

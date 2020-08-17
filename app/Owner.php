@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
@@ -17,6 +18,11 @@ class Owner extends Model
         "town",
         "postcode",
     ];
+
+    public function animals()
+    {
+        return $this->hasMany(Animal::class);
+    }
 
     public static function haveWeBananas(int $number) : string
     {

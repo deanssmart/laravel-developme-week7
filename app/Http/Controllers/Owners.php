@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Owner;
+use App\Animal;
 use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;
 use Illuminate\Support\Facades\DB;
@@ -18,8 +19,13 @@ class Owners extends Controller
 
     public function show(Owner $owner)
     {
+
+        $animals = $owner->animals;
+
+
         return view("owners/show", [
-            "owner" => $owner
+            "owner" => $owner,
+            "animals" => $animals,
         ]);
     }
 
