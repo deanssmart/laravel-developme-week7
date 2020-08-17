@@ -36,6 +36,7 @@
             <div class="form-group">
                 <label for="telephone">Telephone</label>
                 <input 
+                    type="tel"
                     class="form-control @error('telephone') is-invalid @enderror"
                     id="telephone"
                     name="telephone"                    
@@ -51,6 +52,7 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input 
+                    type="email"
                     class="form-control @error('email') is-invalid @enderror" 
                     id="email" 
                     name="email"                     

@@ -6,6 +6,7 @@ use App\Owner;
 use App\Animal;
 use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;
+use App\Http\Requests\AnimalRequest;
 use Illuminate\Support\Facades\DB;
 
 class Owners extends Controller
@@ -22,11 +23,19 @@ class Owners extends Controller
 
         $animals = $owner->animals;
 
-
         return view("owners/show", [
             "owner" => $owner,
             "animals" => $animals,
         ]);
+    }
+
+    public function createAnimalPost(AnimalRequest $request, Owner $owner)
+    {
+   
+        $animal = new Animal($request->all());
+        $owner->animals()->save($animal);
+
+        return redirect("/owners/{$owner->id}");
     }
 
     public function create()

@@ -17,23 +17,25 @@
             @include("_partials/buttons", ["owner" => $owner])             
         </div>
  
-
         <h3 class = "container card-header mb-4">Pets</h3>
         <div class="container mb-4">
             <ul class="list-group">
                 @foreach ($animals as $animal)
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-3 bold">{{ $animal->name }}</h5>
-                        <small>{{ $animal->updated_at->diffForHumans() }}</small>
-                    </div>
-                    <p class="mb-1"><span class="bold">Type:</span class="bold"> {{ $animal->type }}</p>
-                    <p class="mb-1"><span class="bold">D.O.B:</span class="bold"> {{ date('d-m-Y', strtotime($animal->dob)) }}</p>
-                    <p class="mb-1"><span class="bold">Weight:</span class="bold"> {{ $animal->weight }}Kg</p>
-                    <p class="mb-1"><span class="bold">Height:</span class="bold"> {{ $animal->height }}m</p>
-                    <p class="mb-1"><span class="bold">Biteyness:</span class="bold"> {{ $animal->biteyness }}</p>     
+                    <li class = "card mb-2">
+                        <a href="#" class="border-0 list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-3 bold">{{ $animal->name }}</h5>
+                                <small>{{ $animal->updated_at->diffForHumans() }}</small>
+                            </div>
+                            <p class="mb-1">more details...</p>
+                        </a>
+                        @include("_partials/buttons", ["owner" => $owner])
+                    </li>
                 @endforeach
             </ul>
         </div>
+
+        @include("_partials/petForm", ["heading" => "Add a"])
 
         
 

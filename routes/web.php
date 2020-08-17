@@ -23,10 +23,12 @@ Route::group(["prefix" => "owners"], function(){
         Route::get('edit/{owner}', "Owners@edit");   
         Route::post('edit/{owner}', "Owners@editPost");
         Route::post('delete/{owner}', "Owners@destroy");
+        Route::post('{owner}', "Owners@createAnimalPost");
     });
     Route::get('index', "Owners@index");
     Route::get('search', "Owners@search");
-    Route::get('{owner}', "Owners@show");     
+    Route::get('{owner}', "Owners@show");
+
 });
 
 Auth::routes(['register' => false]);
