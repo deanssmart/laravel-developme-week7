@@ -23,8 +23,6 @@
         <main class="mt-4">
             @yield("content")
         </main>
-
-        @include("_partials/footer")
     </div>
   </body>
 </html>

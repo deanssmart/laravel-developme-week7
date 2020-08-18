@@ -14,15 +14,15 @@
             <p class="mb-1">{!! nl2br($owner->fullAddress()) !!}</p>
             <p class="mb-1">{{ $owner->formattedPhoneNumber() }}</p>
             <p class="mb-1">{{ $owner->email }}</p>
-            @include("owners/buttons", ["owner" => $owner])             
+            @include("owners/_partials/buttons", ["owner" => $owner])             
         </div>
  
         <h3 class = "container card-header mb-4">Pets</h3>
         <div class="container mb-4">
-            @include("animals/list", ["animals" => $animals])
+            @include("animals/_partials/list", ["animals" => $animals])
         </div>
 
-        @include("animals/form", ["heading" => "Add a"])
+        @include("animals/_partials/createForm", ["heading" => "Add a"])
 
         
 

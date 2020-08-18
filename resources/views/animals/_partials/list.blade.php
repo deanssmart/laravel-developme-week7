@@ -20,7 +20,7 @@
                                 <small>{{ $animal->updated_at->diffForHumans() }}</small>                                
                             </div>
                         </div>
-                        @include("animals/buttons", ["animal" => $animal])
+                        @include("animals/_partials/buttons", ["animal" => $animal])
                     </li>
                 @endforeach
             </ul>

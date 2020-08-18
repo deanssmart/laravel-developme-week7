@@ -5,5 +5,5 @@
     @endsection
 
     @section("content")
-        @include("owners/form", ["heading" => "Create"])
+        @include("owners/_partials/form", ["heading" => "Create"])
     @endsection
