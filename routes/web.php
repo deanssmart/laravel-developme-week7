@@ -19,11 +19,13 @@ Route::get('/home', "Home@index");
 Route::group(["prefix" => "owners"], function(){    
     Route::group(["middleware" => "auth"], function() {
         Route::get('create', "Owners@create");
-        Route::post('create', "Owners@createPost"); 
-        Route::get('edit/{owner}', "Owners@edit");   
-        Route::post('edit/{owner}', "Owners@editPost");
+        Route::post('create', "Owners@createPost");
         Route::post('delete/{owner}', "Owners@destroy");
         Route::post('{owner}', "Animals@createPost");
+        Route::group(["prefix" => "edit"], function(){
+            Route::get('{owner}', "Owners@edit");   
+            Route::post('{owner}', "Owners@editPost");
+        }); 
     });
     Route::get('index', "Owners@index");
     Route::get('search', "Owners@search");
@@ -33,8 +35,11 @@ Route::group(["prefix" => "owners"], function(){
 Route::group(["prefix" => "animals"], function(){
     Route::group(["middleware" => "auth"], function() {
         Route::post('delete/{animal}', "Animals@destroy");
-        Route::get('edit/{animal}', "Animals@edit");   
-        Route::post('edit/{animal}', "Animals@editPost");
+        Route::group(["prefix" => "edit"], function(){
+            Route::get('{animal}', "Animals@edit");   
+            Route::post('{animal}', "Animals@editPost");
+        });
+
     });
 });
 
