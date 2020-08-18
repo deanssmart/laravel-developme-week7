@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Owners;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(["prefix" => "owners"], function(){
+    Route::get("", [Owners::class, "index"]);
+    Route::post("", [Owners::class, "store"]);
+    Route::group(["prefix" => "{owner}"], function(){
+        Route::get("", [Owners::class, "show"]);
+        Route::put("", [Owners::class, "update"]);
+        Route::delete("", [Owners::class, "destroy"]);       
+    });
+});
+
+
