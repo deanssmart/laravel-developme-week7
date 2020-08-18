@@ -89,20 +89,19 @@
                 <label for="biteyness">Biteyness</label>
                 <select class="form-control @error('biteyness') is-invalid @enderror"
                 id="biteyness"
-                name="biteyness"
-                value="{{ old('biteyness') }}"/>
+                name="biteyness"/>
 
                 @error('biteyness')
                     <p class="invalid-feedback">
                         {{ $message }}
                     </p>
                 @enderror  
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option value="0" {{ old('biteyness') == 0 ? 'selected' : '' }}>0</option>
+                <option value="1" {{ old('biteyness') == 1 ? 'selected' : '' }}>1</option>
+                <option value="2" {{ old('biteyness') == 2 ? 'selected' : '' }}>2</option>
+                <option value="3" {{ old('biteyness') == 3 ? 'selected' : '' }}>3</option>
+                <option value="4" {{ old('biteyness') == 4 ? 'selected' : '' }}>4</option>
+                <option value="5" {{ old('biteyness') == 5 ? 'selected' : '' }}>5</option>
                 </select>
             </div>                     
         </fieldset>

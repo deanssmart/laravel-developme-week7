@@ -25,7 +25,7 @@ class Owners extends Controller
 
         return view("owners/show", [
             "owner" => $owner,
-            "animals" => $animals,
+            "animals" => $animals->sortByDesc("updated_at"),
         ]);
     }
 
