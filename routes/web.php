@@ -23,7 +23,7 @@ Route::group(["prefix" => "owners"], function(){
         Route::get('edit/{owner}', "Owners@edit");   
         Route::post('edit/{owner}', "Owners@editPost");
         Route::post('delete/{owner}', "Owners@destroy");
-        Route::post('{owner}', "Owners@createAnimalPost");
+        Route::post('{owner}', "Animals@createPost");
     });
     Route::get('index', "Owners@index");
     Route::get('search', "Owners@search");
@@ -33,9 +33,9 @@ Route::group(["prefix" => "owners"], function(){
 
 Route::group(["prefix" => "animals"], function(){
     Route::group(["middleware" => "auth"], function() {
-        Route::post('delete/{animal}', "Owners@animalDestroy");
-        Route::get('edit/{animal}', "Owners@animalEdit");   
-        Route::post('edit/{animal}', "Owners@animalEditPost");
+        Route::post('delete/{animal}', "Animals@destroy");
+        Route::get('edit/{animal}', "Animals@edit");   
+        Route::post('edit/{animal}', "Animals@editPost");
     });
 });
 

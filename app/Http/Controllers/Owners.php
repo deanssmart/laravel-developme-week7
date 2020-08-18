@@ -29,15 +29,6 @@ class Owners extends Controller
         ]);
     }
 
-    public function createAnimalPost(AnimalRequest $request, Owner $owner)
-    {
-   
-        $animal = new Animal($request->all());
-        $owner->animals()->save($animal);
-
-        return redirect("/owners/{$owner->id}");
-    }
-
     public function create()
     {
         return view("owners/create");
@@ -60,23 +51,7 @@ class Owners extends Controller
     public function editPost(OwnerRequest $request, Owner $owner)
     {
         $data = $request->all();
-        $owner->fill($data)->save();
-        return redirect("/owners/{$owner->id}");        
-    }
-
-    public function animalEdit(Owner $owner, Animal $animal)
-    {
-        return view("animals/edit", [
-            "owner" => $owner,
-            "animal" => $animal
-        ]);
-    }
-
-    public function animalEditPost(AnimalRequest $request, Animal $animal, Owner $owner)
-    {
-        $owner = $animal->owner;
-        $data = $request->all();
-        $animal->fill($data)->save();
+        $owner->update($data);
         return redirect("/owners/{$owner->id}");        
     }
 
@@ -95,14 +70,6 @@ class Owners extends Controller
     {
         $owner->delete();
         return redirect("/owners/index");
-    }
-
-    public function animalDestroy(Animal $animal)
-    {
-        $owner = $animal->owner;
-        $animal->delete();
-        
-        return redirect("/owners/{$owner->id}");
     }
 
 }
