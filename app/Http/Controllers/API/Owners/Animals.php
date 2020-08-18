@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Owners;
 
 use App\Owner;
 use App\Animal;
+use App\Http\Requests\API\AnimalRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class Animals extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Owner $owner)
+    public function store(AnimalRequest $request, Owner $owner)
     {
         $animal = new Animal($request->all());
         $owner->animals()->save($animal);

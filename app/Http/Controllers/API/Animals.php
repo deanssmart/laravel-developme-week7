@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Animal;
+use App\Http\Requests\API\AnimalRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class Animals extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnimalRequest $request)
     {
         //
     }
@@ -47,7 +48,7 @@ class Animals extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Animal $animal)
+    public function update(AnimalRequest $request, Animal $animal)
     {
         $data = $request->all();
         $animal->update($data);

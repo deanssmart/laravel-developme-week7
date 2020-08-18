@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Owner;
+use App\Http\Requests\API\OwnerRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class Owners extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OwnerRequest $request)
     {
         $data = $request->all();
 
@@ -49,7 +50,7 @@ class Owners extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Owner $owner)
+    public function update(OwnerRequest $request, Owner $owner)
     {
         $data = $request->all();
         $owner->update($data);
