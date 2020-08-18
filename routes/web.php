@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', "Home@index");
 Route::get('/home', "Home@index");
 
-Route::group(["prefix" => "owners"], function(){
+Route::group(["prefix" => "owners"], function(){    
     Route::group(["middleware" => "auth"], function() {
         Route::get('create', "Owners@create");
         Route::post('create', "Owners@createPost"); 

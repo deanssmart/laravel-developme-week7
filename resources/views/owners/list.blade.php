@@ -11,7 +11,7 @@
                     </div>
                     <p class="mb-1">more details...</p>
                 </a>
-                @include("_partials/buttons", ["owner" => $owner])           
+                @include("owners/buttons", ["owner" => $owner])           
             </li>
         @endforeach
     </ul>

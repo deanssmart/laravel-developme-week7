@@ -24,7 +24,7 @@
             <button class="btn btn-primary my-2 my-sm-0" type="submit">Logout</button>
         </form>    
         @else
-            <a class="btn btn-primary my-2 my-sm-0" href="/login">Login</a>      
+            <a class="btn btn-primary my-2 my-sm-0" href="{{ route('login') }}">Login</a>      
         @endif           
     </nav>
 </header>
