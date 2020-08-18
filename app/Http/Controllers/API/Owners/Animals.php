@@ -7,6 +7,8 @@ use App\Animal;
 use App\Http\Requests\API\AnimalRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\API\AnimalResource;
+use App\Http\Resources\API\AnimalListResource;
 
 class Animals extends Controller
 {
@@ -18,7 +20,7 @@ class Animals extends Controller
     public function index(Owner $owner)
     {
         $animals = $owner->animals;
-        return $animals;  
+        return AnimalListResource::collection($animals);
     }
 
     /**
@@ -31,7 +33,7 @@ class Animals extends Controller
     {
         $animal = new Animal($request->all());
         $owner->animals()->save($animal);
-        return $animal;
+        return new AnimalResource($animal);
     }
 
 }

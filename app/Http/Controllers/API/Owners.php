@@ -7,7 +7,7 @@ use App\Http\Requests\API\OwnerRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\API\OwnerResource;
-
+use App\Http\Resources\API\OwnerListResource;
 
 class Owners extends Controller
 {
@@ -18,7 +18,7 @@ class Owners extends Controller
      */
     public function index()
     {
-        return Owner::all();
+        return OwnerListResource::collection(Owner::all());
     }
 
     /**
