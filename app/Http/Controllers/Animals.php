@@ -29,7 +29,7 @@ class Animals extends Controller
         ]);
     }
 
-    public function editPost(AnimalRequest $request, Animal $animal, Owner $owner)
+    public function editPost(AnimalRequest $request, Animal $animal)
     {
         $owner = $animal->owner;
         $data = $request->all();

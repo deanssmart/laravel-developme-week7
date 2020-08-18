@@ -28,7 +28,6 @@ Route::group(["prefix" => "owners"], function(){
     Route::get('index', "Owners@index");
     Route::get('search', "Owners@search");
     Route::get('{owner}', "Owners@show");
-
 });
 
 Route::group(["prefix" => "animals"], function(){
