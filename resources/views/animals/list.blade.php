@@ -1,4 +1,4 @@
-@if ($owners->isEmpty())
+@if ($animals->isEmpty())
     <p class="container mb-1">No Pets</p>
 @else
             <ul class="list-group">
