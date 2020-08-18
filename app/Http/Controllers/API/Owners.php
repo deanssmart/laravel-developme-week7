@@ -6,6 +6,8 @@ use App\Owner;
 use App\Http\Requests\API\OwnerRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\API\OwnerResource;
+
 
 class Owners extends Controller
 {
@@ -28,8 +30,9 @@ class Owners extends Controller
     public function store(OwnerRequest $request)
     {
         $data = $request->all();
+        $owner = Owner::create($data);
 
-        return Owner::create($data);
+        return new OwnerResource($owner);
     }
 
     /**
@@ -40,7 +43,7 @@ class Owners extends Controller
      */
     public function show(Owner $owner)
     {
-        return $owner;
+        return new OwnerResource($owner);
     }
 
     /**
@@ -55,7 +58,7 @@ class Owners extends Controller
         $data = $request->all();
         $owner->update($data);
 
-        return $owner;
+        return new OwnerResource($owner);
     }
 
     /**
