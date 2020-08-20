@@ -2,8 +2,8 @@
 
 namespace App;
 
-
 use Illuminate\Database\Eloquent\Model;
+use App\Treatment;
 
 class Animal extends Model
 {
@@ -19,6 +19,11 @@ class Animal extends Model
     public function owner()
     {
         return $this->belongsTo(Owner::class);
+    }
+
+    public function treatments()
+    {
+        return $this->belongsToMany(Treatment::class);
     }
 
     public function dangerous() : bool
