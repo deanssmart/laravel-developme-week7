@@ -6,40 +6,12 @@ class Cracker
 {
 
     private $keys;
-    private $letters = [
-                        "a",
-                        "b",
-                        "c",
-                        "d",
-                        "e",
-                        "f",
-                        "g",
-                        "h",
-                        "i",
-                        "j",
-                        "k",
-                        "l",
-                        "m",
-                        "n",
-                        "o",
-                        "p",
-                        "q",
-                        "r",
-                        "s",
-                        "t",
-                        "u",
-                        "v",
-                        "w",
-                        "x",
-                        "y",
-                        "z"
-                    ];
-
-    
+    private $letters;    
     
     public function __construct(string $keys)
     {
-        $this->keys = explode(" ", $keys);
+        $this->keys = explode(" ", $keys); 
+        $this->letters = range("a", "z");       
     } 
     
 
@@ -50,7 +22,8 @@ class Cracker
 
         $answer = "";
         foreach($codeArr as $value){
-            $answer .= $value === " " ? " " : $dictionary[$value];        
+            $answer .= $value === " " ? " " : $dictionary[$value];
+        
         }
 
         return $answer;
