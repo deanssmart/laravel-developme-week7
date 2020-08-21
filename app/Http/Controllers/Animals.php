@@ -15,9 +15,12 @@ class Animals extends Controller
     public function createPost(AnimalRequest $request, Owner $owner)
     {
    
-        $animal = new Animal($request->all());
+        $animal = new Animal($request->only(["name", "type", "dob", "weight", "height", "biteyness"]));
+
         $owner->animals()->save($animal);
 
+        $animal->setTreatments($request->get("treatments"));
+        
         return redirect("/owners/{$owner->id}");
     }
 

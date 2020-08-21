@@ -50,7 +50,7 @@
             </div>
 
             <div class="form-group">
-                <label for="weight">Weight (kg)</label>
+                <label for="weight">Weight <small>(kg)</small></label>
                 <input 
                     type="number"
                     min="0"
@@ -68,7 +68,7 @@
             </div>            
 
             <div class="form-group">
-                <label for="height">Height (m)</label>
+                <label for="height">Height <small>(m)</small></label>
                 <input
                     type="number"
                     min="0"
@@ -103,7 +103,24 @@
                 <option value="4" {{ old('biteyness') == 4 ? 'selected' : '' }}>4</option>
                 <option value="5" {{ old('biteyness') == 5 ? 'selected' : '' }}>5</option>
                 </select>
-            </div>                     
+            </div>   
+
+            <div class="form-group">
+                <label for="treatments">Treatments <small>(separate each treatment with a comma)</small></label>
+                <input 
+                    class="form-control @error('treatments') is-invalid @enderror"
+                    id="treatments" 
+                    name="treatments[treatment]"                    
+                    value="{{ old('treatments') }}"/>
+
+                @error('name')
+                    <p class="invalid-feedback">
+                        {{ $message }}
+                    </p>
+                @enderror                
+            </div>
+
+
         </fieldset>
 
         <div class="card-footer text-right">

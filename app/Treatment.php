@@ -19,7 +19,7 @@ class Treatment extends Model
 
     static public function fromString(string $string) : Treatment
     {
-        $string = trim($string);        
+        $string = trim(strtolower($string));        
         $treatment = Treatment::firstWhere("name", $string);
         return $treatment ? $treatment : Treatment::create(["name" => $string]);
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Treatments;
 use App\Http\Controllers\API\Owners;
 use App\Http\Controllers\API\Animals;
 use App\Http\Controllers\API\Owners\Animals as OwnersAnimals;
@@ -46,4 +47,7 @@ Route::group(["prefix" => "animals"], function(){
     });
 });
 
+Route::group(["prefix" => "treatments"], function(){
+    Route::get("", [Treatments::class, "index"]);
+});
 
