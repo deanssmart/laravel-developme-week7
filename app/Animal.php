@@ -35,4 +35,13 @@ class Animal extends Model
     {
         return date_diff(date_create($this->dob), date_create('today'))->y;
     }
+
+    public function setTreatments(array $strings) : Animal
+    {
+       $treatments = Treatment::fromStrings($strings);
+
+       $this->treatments()->sync($treatments->pluck("id"));
+
+       return $this;
+    }
 }

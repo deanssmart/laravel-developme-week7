@@ -25,7 +25,7 @@ class Treatment extends Model
     }
 
     static public function fromStrings(array $strings) : Collection
-    {        
-        return collect($strings)->map([Treatment::class, "fromString"])->unique("name");
+    {   
+       return collect($strings)->map([Treatment::class, "fromString"]);
     }
 }

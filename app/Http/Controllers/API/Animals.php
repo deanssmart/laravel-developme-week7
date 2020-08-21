@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Treatment;
 use App\Animal;
 use App\Http\Requests\API\AnimalRequest;
 use App\Http\Controllers\Controller;
@@ -41,8 +42,10 @@ class Animals extends Controller
      */
     public function update(AnimalRequest $request, Animal $animal)
     {
-        $data = $request->all();
+        $data = $request->only(["name", "type", "dob", "weight", "height", "biteyness"]);
         $animal->update($data);
+
+        $animal->setTreatments($request->get("treatments"));
 
         return new AnimalResource($animal);
     }

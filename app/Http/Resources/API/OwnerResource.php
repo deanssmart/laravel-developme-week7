@@ -22,7 +22,7 @@ class OwnerResource extends JsonResource
             "address_2" => $this->address_2,
             "town" => $this->town,
             "postcode" => $this->postcode,
-            "animals" => collect($this->animals)->pluck('name'),
+            "animals" => $this->animals->pluck('name'),
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Owners;
 
 use App\Owner;
 use App\Animal;
+use App\Treatment;
 use App\Http\Requests\API\AnimalRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -30,9 +31,13 @@ class Animals extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(AnimalRequest $request, Owner $owner)
-    {
-        $animal = new Animal($request->all());
+    {        
+        $animal = new Animal($request->only(["name", "type", "dob", "weight", "height", "biteyness"]));
+
         $owner->animals()->save($animal);
+
+        $animal->setTreatments($request->get("treatments"));
+
         return new AnimalResource($animal);
     }
 
