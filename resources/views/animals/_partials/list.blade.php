@@ -18,15 +18,22 @@
                                 @endif
                                 <small>{{ $animal->updated_at->diffForHumans() }}</small>                                
                             </div>
+
                             <div class="mt-4 container">
-                            <h6 class="mb-2 bold">Treatments: </h6>
-                            <ul class="list-group">
-                                @foreach ($animal->treatments()->pluck("name") as $treatment)
-                                    <li>
-                                        <p class="mb-1">{{ $treatment }}</p>
-                                    </li> 
-                                @endforeach
-                            </ul>
+                                <h6 class="mb-2 bold">Treatments: </h6>
+                                @if ($animal->treatments()->get()->isEmpty())
+                                    <p class="container mb-1">No Treatments</p>
+                                @else
+                                    <ul class="list-group">
+                                        @foreach ($animal->treatments()->get() as $treatment)
+                                            <li class="card mb-2">
+                                                <a href="/treatments/{{ $treatment->id }}" class="border-0 list-group-item list-group-item-action">
+                                                    <p class="mb-1">{{ $treatment->name }}</p>
+                                                </a>
+                                            </li> 
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </div>
                         </div>
                         @include("animals/_partials/buttons", ["animal" => $animal])

@@ -111,7 +111,7 @@
                     class="form-control @error('treatments') is-invalid @enderror"
                     id="treatments" 
                     name="treatments"                    
-                    value="{{ old('height') ?? (implode(", ", $animal->treatments()->pluck("name")->all()) ?? '') }}"/>
+                    value="{{ old('treatments') ?? (implode(", ", $animal->treatments()->pluck("name")->all()) ?? '') }}"/>
 
                 @error('name')
                     <p class="invalid-feedback">

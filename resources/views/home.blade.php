@@ -21,6 +21,7 @@
                 </div>
                 <div class="links">
                     <a href="/owners/index">Owners</a>
+                    <a href="/treatments/index">Treatments</a>
                     {{-- <a href="/owners/create">New Owner</a> --}}
                     @if (Auth::check())   
                         <a href="#"

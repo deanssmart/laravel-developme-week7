@@ -43,5 +43,13 @@ Route::group(["prefix" => "animals"], function(){
     });
 });
 
+Route::group(["prefix" => "treatments"], function(){
+    Route::group(["middleware" => "auth"], function() {
+        Route::post('delete/{treatment}', "Treatments@destroy");
+    });
+    Route::get('index', "Treatments@index");
+    Route::get('{treatment}', "Treatments@show");
+});
+
 Auth::routes(['register' => false]);
 
