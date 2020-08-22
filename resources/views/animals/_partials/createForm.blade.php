@@ -110,7 +110,7 @@
                 <input 
                     class="form-control @error('treatments') is-invalid @enderror"
                     id="treatments" 
-                    name="treatments[treatment]"                    
+                    name="treatments"                    
                     value="{{ old('treatments') }}"/>
 
                 @error('name')

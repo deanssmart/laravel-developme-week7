@@ -30,7 +30,7 @@ class AnimalTest extends TestCase
         ]);
     }
 
-    public function testAnimalStore()
+    public function testfields()
     {        
         $owner = Owner::first();
 
@@ -42,8 +42,9 @@ class AnimalTest extends TestCase
             "height" => "2",
             "biteyness" => "3",
         ]);
-
+        
         $owner->animals()->save($animal);
+        $animal->setTreatments(["treatment1", "treatment2"]);
 
         //check details
         $this->assertSame($animal->name, "Test Pet");
@@ -53,24 +54,10 @@ class AnimalTest extends TestCase
         $this->assertSame($animal->height, "2");
         $this->assertSame($animal->biteyness, "3");
         $this->assertSame($animal->owner_id, 1);
+        $this->assertSame($animal->treatments->pluck("name")->all(), ["treatment1", "treatment2"]);
 
         
-        
-        
-        // Animal::create([
-        //     "name" => "Test Pet",
-        //     "type" => "Catdog",
-        //     "dob" => "2015-06-20",
-        //     "weight" => "15",
-        //     "height" => "2",
-        //     "biteyness" => "3",
-        //     "owner_id" => $animal->id
-        // ]);
-
-        // $animalFromDB = Animal::first();
-        // dump($animalFromDB);
-        
-        // dump($animal);
+  
 
     }
 }

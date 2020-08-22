@@ -20,7 +20,6 @@ class Owners extends Controller
 
     public function show(Owner $owner)
     {
-
         $animals = $owner->animals;
 
         return view("owners/show", [

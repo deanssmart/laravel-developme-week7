@@ -19,7 +19,8 @@ class Animals extends Controller
 
         $owner->animals()->save($animal);
 
-        $animal->setTreatments($request->get("treatments"));
+        //takes the data input from the animal create form as a string, converts it to an array delimitted by commas then passes the array to the setTreatments method
+        $animal->setTreatments(explode(",", $request->get("treatments")));
         
         return redirect("/owners/{$owner->id}");
     }

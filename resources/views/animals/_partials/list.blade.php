@@ -5,9 +5,8 @@
                 @foreach ($animals as $animal)
                     <li class = "card mb-2">
                         <div class="border-0 list-group-item">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-3 bold">{{ $animal->name }}</h5>
-                                                                                              
+                        <h5 class="mb-4 bold">{{ $animal->name }}</h5>
+                            <div class="d-flex w-100 justify-content-between container">
                                 <p class="text-center mb-1"><span class="bold">Type: </span><br>{{ $animal->type }}</p>
                                 <p class="text-center mb-1"><span class="bold">Age: </span><br>{{ $animal->age() }}</p>
                                 <p class="text-center mb-1"><span class="bold">Weight: </span><br>{{ $animal->weight }}Kg</p>
@@ -18,6 +17,16 @@
                                 <p class="text-center mb-1"><span class="bold">Biteyness: </span><br>{{ $animal->biteyness }}</p> 
                                 @endif
                                 <small>{{ $animal->updated_at->diffForHumans() }}</small>                                
+                            </div>
+                            <div class="mt-4 container">
+                            <h6 class="mb-2 bold">Treatments: </h6>
+                            <ul class="list-group">
+                                @foreach ($animal->treatments()->pluck("name") as $treatment)
+                                    <li>
+                                        <p class="mb-1">{{ $treatment }}</p>
+                                    </li> 
+                                @endforeach
+                            </ul>
                             </div>
                         </div>
                         @include("animals/_partials/buttons", ["animal" => $animal])
