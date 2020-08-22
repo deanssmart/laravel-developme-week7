@@ -103,7 +103,23 @@
                 <option value="4" {{ old('biteyness', $animal->biteyness) == 4 ? 'selected' : '' }}>4</option>
                 <option value="5" {{ old('biteyness', $animal->biteyness) == 5 ? 'selected' : '' }}>5</option>
                 </select>
-            </div>                     
+            </div>        
+
+            <div class="form-group">
+                <label for="treatments">Treatments <small>(separate each treatment with a comma)</small></label>
+                <input 
+                    class="form-control @error('treatments') is-invalid @enderror"
+                    id="treatments" 
+                    name="treatments"                    
+                    value="{{ old('height') ?? (implode(", ", $animal->treatments()->pluck("name")->all()) ?? '') }}"/>
+
+                @error('name')
+                    <p class="invalid-feedback">
+                        {{ $message }}
+                    </p>
+                @enderror                
+            </div>            
+
         </fieldset>
 
         <div class="card-footer text-right">
