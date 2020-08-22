@@ -5,10 +5,10 @@
     @endsection
 
     @section("content")
-        <h3 class = "container card-header mb-4">Treatment</h3>
+        <h3 class = "container card-header mb-4">{{ $treatment->name }}</h3>
         <div class="container mb-4">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-3 bold">{{ $treatment->name }}</h5>
+                <h5 class="mb-3 bold">Pets Booked In: </h5>
             </div>
             @if ($animals->isEmpty())
                 <p class="container mb-1">No Pets Booked In</p>
