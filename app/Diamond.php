@@ -7,20 +7,25 @@ class Diamond
     public function form(string $letter) : string
     {
         $letters = range("A", $letter);
-        $outerSpacing = count($letters);
-        $newLettersArr = [];
+        $length = count($letters);
+        $newLettersArr = [];        
 
         foreach($letters as $index => $letter){
             if($letter === "A"){
-                // dump($letter);
-                $newLettersArr[] = str_repeat("_", $outerSpacing - 1)."A".str_repeat("_", $outerSpacing - 1)."\n";
-            } else {
-                // dump($letter);
-                $newLettersArr[] = str_repeat("_", $outerSpacing - ($index + 1)).$letter.str_repeat("_", ((2 * $index) - 1)).$letter.str_repeat("_", $outerSpacing - ($index + 1))."\n";
+                $newLettersArr[] = str_repeat(" ", $length - 1)."A".str_repeat(" ", $length - 1)."\n";
+            } else{
+                $newLettersArr[] = str_repeat(" ", $length - ($index + 1)).$letter.str_repeat(" ", ((2 * $index) - 1)).$letter.str_repeat(" ", $length - ($index + 1))."\n";
             }
         }
-        dump(implode("", $newLettersArr));
-        return implode("", $newLettersArr);
+
+        $newLettersArrMirror = array_reverse($newLettersArr);
+       
+        $trimmedMirrorArr = array_splice($newLettersArrMirror, 1, $length);
+
+        $mergeArr = array_merge($newLettersArr, $trimmedMirrorArr);
+
+        dump(implode("", $mergeArr));
+        return implode("", $mergeArr);
     }
 }
 

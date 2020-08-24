@@ -12,10 +12,10 @@ class DiamondTest extends TestCase
         $this->diamond = new Diamond();
     }
 
-    public function testA()
-    {
-        $this->assertSame("A\n", $this->diamond->form("A"));
-    } 
+    // public function testA()
+    // {
+    //     $this->assertSame("A\n", $this->diamond->form("A"));
+    // } 
 
     // public function testb_should_give_sequence()
     // {
@@ -46,19 +46,29 @@ class DiamondTest extends TestCase
     //     $this->assertSame("__A__\n_BB_\nCC\n", $this->diamond->form('C'));
     // }
     
-    public function test_should_have_correct_inner_spacing()
-    {
-        $this->assertSame("__A__\n_B_B_\nC___C\n", $this->diamond->form('C'));
-    }
+    // public function test_should_have_correct_inner_spacing()
+    // {
+    //     $this->assertSame("__A__\n_B_B_\nC___C\n", $this->diamond->form('C'));
+    // }
 
-    public function testD()
-    {
-        $this->assertSame("___A___\n__B_B__\n_C___C_\nD_____D\n", $this->diamond->form('D'));
-    }
+    // public function testD()
+    // {
+    //     $this->assertSame("___A___\n__B_B__\n_C___C_\nD_____D\n", $this->diamond->form('D'));
+    // }
 
-    public function test_should_mirror_top()
+    // public function test_should_mirror_top()
+    // {
+    //     $this->assertSame("_A_\nB_B\n_A_\n", $this->diamond->form('B')); 
+    // }
+
+    // public function testDiamondD()
+    // {
+    //     $this->assertSame("___A___\n__B_B__\n_C___C_\nD_____D\n_C___C_\n__B_B__\n___A___\n",$this->diamond->form('D')); 
+    // }
+
+    public function testDiamondZ()
     {
-        $this->assertSame("__A__\n_B_B_\n__A__\n", $this->diamond->form('B')); 
+        return $this->diamond->form("Z");
     }
 
 }
