@@ -51,5 +51,5 @@ Route::group(["prefix" => "treatments"], function(){
     Route::get('{treatment}', "Treatments@show");
 });
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 
