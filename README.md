@@ -33,6 +33,7 @@ A veterinary practice database app that allows tracking of owners and their pets
 - List treatments and see which pets are booked in for each treatment (many to many)
 - Authentication login to only allow admin rights for adding, editing and deleting from the database (I have provided a login above for you to play around and update the database)
 - Restful API
+- Age of pet calculated from DoB
 - Danger warning if pet is a 3 or above in biteyness
 - Neat and clean UI 👍
 
@@ -140,3 +141,264 @@ cd code
 artisan migrate
 ```
 
+### Creating an authorised user
+
+Some of the app's features are blocked to unauthorised users to you will need to create a user in order to access them. The easiest way to do this is using `artisan tinker`:
+
+````
+$user=newUser();
+$user->name="Your Name"
+$user->role="Your Role"
+$user->email="your@email.com"
+$user->password=Hash::make("password")
+$user->save()
+````
+
+You can now use these credentials to log in and add, edit, and delete owners, pets and treatments.
+
+## API End-Points
+
+You can access the live API using the following link:
+
+https://vet-practice.herokuapp.com/api
+
+and corresponding end-points:
+
+### Owners
+
+#### 'GET /owners'
+Will return a list of all owners
+````
+{
+    "data": [
+        {
+            "id": 2,
+            "first_name": "Cadbury",
+            "last_name": "Flake"
+        },
+        {
+            "id": 3,
+            "first_name": "Hula",
+            "last_name": "Hoop"
+        },
+        {
+            "id": 4,
+            "first_name": "Chilli",
+            "last_name": "Bottle"
+        }
+    ]
+}
+````
+
+#### 'POST /owners'
+Will create a new owner
+##### Request
+
+- `first_name`: required
+- `last_name`: required
+- `telephone`: required
+- `email`: required
+- `address_1`: required
+- `address_2`: optional
+- `town`: required
+- `postcode`: required
+
+#### 'GET /owners/<id>'
+Will return an owner with the given id
+
+##### example return
+````
+{
+    "data": {
+        "id": 2,
+        "first_name": "Cadbury",
+        "last_name": "Flake",
+        "address_1": "99",
+        "address_2": null,
+        "town": "Cornetto",
+        "postcode": "BR0 WNN",
+        "animals": [
+            "Big ol Parrot",
+            "Big ol Parrot II"
+        ]
+    }
+}
+````
+#### 'PUT /owners/<id>'
+Will update an entire existing owner
+##### Request
+
+- `first_name`: required
+- `last_name`: required
+- `telephone`: required
+- `email`: required
+- `address_1`: required
+- `address_2`: optional
+- `town`: required
+- `postcode`: required
+
+#### 'DELETE /owners/<id>'
+Will delete an existing owner
+
+### Animals
+
+#### 'GET /owners/<id>/animals'
+Will return the pets of a given owner
+
+##### example return
+````
+{
+    "data": [
+        {
+            "id": 29,
+            "name": "Big ol Parrot",
+            "type": "Parrot",
+            "treatments": [
+                "defeather"
+            ],
+            "owner_first_name": "Cadbury",
+            "owner_last_name": "Flake",
+            "owner_id": 2
+        },
+        {
+            "id": 32,
+            "name": "Big ol Parrot II",
+            "type": "Parrot",
+            "treatments": [
+                "defeather",
+                "debeak"
+            ],
+            "owner_first_name": "Cadbury",
+            "owner_last_name": "Flake",
+            "owner_id": 2
+        }
+    ]
+}
+````
+#### 'POST /owners/<id>/animals'
+Add a pet to an owner
+##### Request
+
+- `name`: required
+- `type`: required, type of animal
+- `dob`: required, YYYY-mm-dd
+- `weight`: required, number in kg
+- `height`: required, number in m
+- `biteyness`: required, integer between 1 and 5
+- `treatments`: required, array comma separated 
+
+#### 'GET /animals'
+Will return a list of all animals
+
+##### example return
+````
+{
+    "data": [
+        {
+            "id": 14,
+            "name": "Pumpy",
+            "type": "Dog",
+            "treatments": [
+                "deball"
+            ],
+            "owner_first_name": "Rugby",
+            "owner_last_name": "Ball",
+            "owner_id": 25
+        },
+        {
+            "id": 23,
+            "name": "Mr Catty",
+            "type": "Cat",
+            "treatments": [
+                "deflea"
+            ],
+            "owner_first_name": "Rugby",
+            "owner_last_name": "Ball",
+            "owner_id": 25
+        },
+        {
+            "id": 25,
+            "name": "Sharky",
+            "type": "Shark",
+            "treatments": [
+                "tooth filling",
+                "counseling"
+            ],
+            "owner_first_name": "Chilli",
+            "owner_last_name": "Bottle",
+            "owner_id": 4
+        }
+    ]
+}
+````
+#### 'GET /animals/<id>'
+Will return an animal with the given id
+
+##### example return
+````
+{
+    "data": {
+        "id": 14,
+        "name": "Pumpy",
+        "type": "Dog",
+        "dob": "2019-01-11",
+        "weight": "7.30",
+        "height": "0.70",
+        "biteyness": 5,
+        "owner_first_name": "Rugby",
+        "owner_last_name": "Ball",
+        "treatments": [
+            "deball"
+        ]
+    }
+}
+````
+#### 'PUT /animals/<id>'
+Will update an entire existing animal
+##### Request
+
+- `name`: required
+- `type`: required, type of animal
+- `dob`: required, YYYY-mm-dd
+- `weight`: required, number in kg
+- `height`: required, number in m
+- `biteyness`: required, integer between 1 and 5
+- `treatments`: required, array comma separated 
+
+#### 'DELETE /animals/<id>'
+Will delete an existing animal
+
+### Treatments
+
+#### 'GET /treatments'
+Will return a list of all treatments
+
+##### example return
+````
+{
+    "data": [
+  {
+            "id": 2,
+            "treatment": "defeather",
+            "animals": [
+                "Big ol Parrot",
+                "Big ol Parrot II"
+            ]
+        },
+        {
+            "id": 7,
+            "treatment": "debeak",
+            "animals": [
+                "Big ol Parrot II"
+            ]
+        },
+        {
+            "id": 14,
+            "treatment": "eye lift",
+            "animals": [
+                "Sophie"
+            ]
+        }
+    ]
+}
+````
