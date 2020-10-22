@@ -1,61 +1,142 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# The Vet Practice
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+![app preview](./public/assets/images/vet-preview.jpg)
 
-## About Laravel
+### View the app online 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Open the live app in your browser with this link: http://vet-practice.herokuapp.com/
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- username: guest@thevetpractice.com 
+- password: password
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Intro
 
-## Learning Laravel
+A veterinary practice database app that allows tracking of owners and their pets with a one to many relationship and pet treatments with a many to many relationship. The app also includes a RESTFUL API (End-points listed below)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Technologies
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP
+- MySQL
+- Laravel
+- Blade
+- HTML/CSS
+- Bootstrap (styling)
+- Git (version managed)
+- Heroku (deployment)
 
-## Laravel Sponsors
+### Functionality and Features
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Adaptive welcome screen depending on time of day and logged in user
+- Add, edit, delete, list and search owners
+- Add, edit and delete pets for each owner (one to many)
+- Add and delete treatments for each pet
+- List treatments and see which pets are booked in for each treatment (many to many)
+- Authentication login to only allow admin rights for adding, editing and deleting from the database (I have provided a login above for you to play around and update the database)
+- Restful API
+- Danger warning if pet is a 3 or above in biteyness
+- Neat and clean UI 👍
 
-### Premium Partners
+### How to Use
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+- Login using the credentials provided (username: guest@thevetpractice.com password: password)
+- Click "owners" to see a list of current owners in the database
+- Click the owners name to see their details and pets they own
+- Use the form at the bottom of the owners page to add a pet to the currently selected owner (multiple treatments can be added using a comma to separate)
+- Once a pet is added, treatments can be clicked which will bring up a list of all pets that are booked in for the chosen treatment
+- A list of all the treatments can be seen by clicking the treatments in the navbar
 
-## Contributing
+## Setup on your machine
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Prerequisites 
+This project requires [Vagrant](https://www.vagrantup.com/) to be downloaded on your machine
 
-## Code of Conduct
+### Steps
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Create a local directory on your machine 
+2. Run the following code in your command line to navigate into that directory:   
 
-## Security Vulnerabilities
+```shell 
+$ cd ~/your-directory-name-here
+```
+3. Copy the SSH key from this GitHub repository `git@github.com:deanssmart/the-vet-practice.git`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. Run the following code in your command line to clone the repo to your machine (you can change the app-name to what you desire):  
 
-## License
+```shell 
+git clone git@github.com:deanssmart/the-vet-practice.git <app-name>
+```
+5. Navigate to your new app directory (the app name you just picked):
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```shell 
+$ cd app-name
+```
+6. Install the dependencies in the node_modules folder:
+
+```shell 
+npm i
+```
+7. Install the dependencies in the composer file:
+
+```shell 
+composer i
+```
+8. Copy the relevant Homestead files into the
+project directory:
+
+```shell 
+vendor/bin/homestead make
+```
+
+9. Change the second line of Homestead.yaml so it just uses 512mb: 
+
+```shell 
+memory: 512
+```
+
+10. Create a .env file:
+
+```shell 
+cp .env.example .env
+```
+
+11. Edit the .env file you just created to use the default Homestead database setup:
+
+```shell 
+DB_DATABASE=homestead
+DB_USERNAME=root
+DB_PASSWORD=secret
+```
+
+12. Generate an application key:
+
+```shell 
+php artisan key:generate
+```
+
+13. Get Vagrant up and running:
+
+```shell 
+vagrant up
+```
+14. Once Vagrant has finished loading, go to:
+
+    1.  On Mac: http://homestead.test
+    2.  On Windows: http://localhost:8000
+
+15. SSH into the Vagrant machine:
+
+```shell 
+vagrant ssh
+```
+
+16. Navigate to the code directory:
+
+```shell 
+cd code
+```
+17. Run migrations:
+
+```shell 
+artisan migrate
+```
+
