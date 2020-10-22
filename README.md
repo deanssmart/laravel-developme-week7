@@ -11,7 +11,7 @@ Open the live app in your browser with this link: http://vet-practice.herokuapp.
 
 ## Intro
 
-A veterinary practice database app that allows tracking of owners and their pets with a one to many relationship and pet treatments with a many to many relationship. The app also includes a RESTFUL API (End-points listed below)
+A veterinary practice database app that allows tracking of owners and their pets with a one to many relationship and pet treatments with a many to many relationship. The app also includes a RESTful API (End-points listed below)
 
 ### Technologies
 
